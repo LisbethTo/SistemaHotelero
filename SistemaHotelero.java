@@ -26,17 +26,25 @@ public class SistemaHotelero extends Hotel{
 
 
     @Override
-    public boolean VerificarDisponibilidad(Habitacion habitacion,
-                    LocalDate entrada, LocalDate salida) {
+    public boolean VerificarDisponibilidad(Habitacion habitacion, LocalDate entrada, LocalDate salida) {
 
-        if (!salida.isAfter(entrada)) {
+        LocalDate hoy = LocalDate.now();
+
+        // Impide realizar reservas en fechas pasadas
+        if (entrada.isBefore(hoy)) {
             return false;
         }
 
-        for (Reserva r : reservas) {
+        // Verifica que la salida sea posterior a la entrada
+        if (salida.isAfter(entrada)) {
+            return false;
+        }
 
-            if (r.habitacion.numero == habitacion.numero) {
 
+
+        for (Reserva r : reservas) { // Recorre las reservas registradas
+
+            if (r.habitacion.numero == habitacion.numero) { // Comprueba si las fechas coinciden con otra reserva.
                 if (entrada.isBefore(r.fechaSalida) && salida.isAfter(r.fechaEntrada)) {
 
                     return false;
@@ -56,32 +64,39 @@ public class SistemaHotelero extends Hotel{
 
     @Override
     public boolean RegistrarReserva(Reserva reserva) {
+
+        
          if (VerificarDisponibilidad(reserva.habitacion, reserva.fechaEntrada, reserva.fechaSalida)) {
 
-            reservas.add(reserva);
+            reservas.add(reserva); // agrega la reserva a la lista reservas
 
-            ActualizarEstados();
+            ActualizarEstados(); //llama otro metodo
 
             return true;
         }
 
         return false;
+
+
     }
 
     @Override
     public void ActualizarEstados() {
 
-        LocalDate hoy = LocalDate.now();
+        LocalDate hoy = LocalDate.now(); //fecha actual
 
-        for (Habitacion h : habitacion.habitaciones) {
 
-            h.estado = "Disponible";
+        
+        for (Habitacion h : habitacion.habitaciones) { 
 
-            for (Reserva r : reservas) {
+            h.estado = "Disponible"; 
+
+            for (Reserva r : reservas) { 
 
                 if (r.habitacion.numero == h.numero) {
-
-                    if (!hoy.isBefore(r.fechaEntrada) && hoy.isBefore(r.fechaSalida)) {
+                    //Si hoy es igual o posterior a la fecha de entrada 
+                    //Y hoy es antes a la fecha de salida, la habitación está ocupada.
+                    if (!hoy.isBefore(r.fechaEntrada) && hoy.isBefore(r.fechaSalida)) { 
 
                         h.estado = "Ocupada";
                         break;

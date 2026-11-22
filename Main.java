@@ -17,7 +17,7 @@ public class Main {
 
         while (opcion != 0) {
 
-            System.out.println("\nSISTEMA HOTELERO");
+            System.out.println("SISTEMA HOTELERO");
             System.out.println("1. Realizar reserva");
             System.out.println("2. Consultar habitaciones");
             System.out.println("0. Salir");
@@ -43,10 +43,10 @@ public class Main {
 
                     System.out.println("Habitacion disponible: " + h.numero);
 
-                    Huesped huesped = new Huesped(); // Crea un nuevo objeto Huesped
+                    Huesped huesped = new Huesped(); // Crea un nuevo  Huesped
                     huesped.CrearHuesped(sc); // Solicita los datos personales del huesped
 
-                    Reserva reserva = new Reserva(); // Crea un nuevo objeto Reserva
+                    Reserva reserva = new Reserva(); // Crea una nueva Reserva
                     reserva.CrearReserva(huesped, h, entrada, salida); // Asocia el huesped, la habitacion y las fechas
 
                     if (hotel.RegistrarReserva(reserva)) {  // Verifica la disponibilidad y registra la reserva
@@ -80,7 +80,7 @@ public class Main {
 
             } else if (opcion == 0) {
 
-                System.out.println("Gracias por utilizar el sistema.");
+                System.out.println("¡Gracias por utilizar el sistema!");
 
             } else {
 

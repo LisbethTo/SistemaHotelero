@@ -5,9 +5,9 @@ La lógica y las funcionalidades del sistema fueron desarrolladas en Java en Vis
 Sin embargo, para el apartado grafico de la página se utilizó inteligencia artificial mediante HTML, CSS y Java Script, 
 
 # Ejecución del proyecto
-Para ejecutar el sistema hotelero, descargue y descomprima el repositorio. A continuación, abra el archivo IniciarHotel.bat, que iniciará automáticamente el servidor y la interfaz gráfica en el navegador.
+Para ejecutar el sistema hotelero, descargue y descomprima el archivo.zip. Despues, abra el archivo IniciarHotel.bat, que iniciará automáticamente el servidor y la interfaz gráfica en el navegador.
 
-Requisito: tener Java JDK instalado en el equipo
+Requisito: tener Java JDK instalado en el computador
 
 El codigo fuente del proyecto se encuentra disponible en:
 https://github.com/LisbethTo/SistemaHotelero

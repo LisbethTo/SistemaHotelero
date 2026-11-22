@@ -345,3 +345,17 @@ footer p {
         grid-template-columns: 1fr;
     }
 }
+
+.reiniciar {
+    background: #a82121;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.reiniciar:hover {
+    background: #801717;
+}

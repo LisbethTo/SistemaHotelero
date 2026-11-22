@@ -67,6 +67,27 @@ document.getElementById("formulario").addEventListener(
             mensaje.className = "error";
         }
     }
+    
 );
+
+
+async function reiniciarSistema() {
+
+    if (confirm("¿Desea eliminar todas las reservas y huéspedes registrados?")) {
+
+        const respuesta = await fetch("/reiniciar", {
+            method: "POST"
+        });
+
+        alert(await respuesta.text());
+
+        if (respuesta.ok) {
+            document.getElementById("formulario").reset();
+            document.getElementById("mensaje").textContent = "";
+
+            cargarHabitaciones();
+        }
+    }
+}
 
 cargarHabitaciones();

@@ -149,6 +149,24 @@ public class Servidor {
 
         });
 
+        servidor.createContext("/reiniciar", peticion -> {
+
+        if (!peticion.getRequestMethod().equals("POST")) {
+            Responder(peticion, "Metodo no permitido.", 405);
+            return;
+        }
+
+        hotel.reservas.clear();
+        hotel.huespedes.clear();
+
+        hotel.ActualizarEstados();
+
+        Responder(peticion, "Sistema reiniciado correctamente.", 200);
+    });
+
+
+
+
         servidor.start();
 
         System.out.println("Servidor iniciado en el puerto 8080");

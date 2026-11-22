@@ -18,23 +18,22 @@ public class Habitacion{
 
 
     public void ListaHabitaciones(List <Habitacion> habitaciones){
-        for (int i = habitaciones.size(); i < 9; i++) {
+        for (int i = habitaciones.size() + 1; i <= 9; i++) {
 
-            Habitacion h = new Habitacion();
+        Habitacion h = new Habitacion();
 
-            if (i <= 3) {
-                h.CrearHabitacion(i, "Individual");
+        if (i <= 3) {
+            h.CrearHabitacion(i, "Individual");
 
-            } else if (i <= 6) {
-                h.CrearHabitacion(i, "Doble");
+        } else if (i <= 6) {
+            h.CrearHabitacion(i, "Doble");
 
-            } else {
-                h.CrearHabitacion(i, "Familiar");
-            }
-
-            habitaciones.add(h);
-   
+        } else {
+            h.CrearHabitacion(i, "Familiar");
         }
+
+        habitaciones.add(h);
+    }
 
         
     }

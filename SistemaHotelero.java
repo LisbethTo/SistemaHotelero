@@ -12,7 +12,7 @@ public class SistemaHotelero extends Hotel{
     public Habitacion BuscarHabitacion(String tipo, LocalDate entrada, LocalDate salida) {
         for (Habitacion h : habitacion.habitaciones) { //recorre la lista de habitaciones
 
-            if (h.tipo.equals(tipo)) {
+            if (h.tipo.equalsIgnoreCase(tipo)) {
 
                 if (VerificarDisponibilidad(h, entrada, salida)) { //llama al metodo
 
@@ -35,8 +35,8 @@ public class SistemaHotelero extends Hotel{
             return false;
         }
 
-        // Verifica que la salida sea posterior a la entrada
-        if (salida.isAfter(entrada)) {
+        //  Rechaza la reserva si la salida no es posterior a la entrada
+        if (!salida.isAfter(entrada)) {
             return false;
         }
 
